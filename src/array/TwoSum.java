@@ -11,6 +11,7 @@ public class TwoSum {
 
     public static void main(String[] args) throws FileNotFoundException {
         NumberWithMoreThanHalfFrequency nwmthf = new NumberWithMoreThanHalfFrequency();
+        PascalTriangle pascalTriangle = new PascalTriangle();
         Scanner sc = new Scanner(new File("input.txt"));
         int size = sc.nextInt();
         int[] arr = new int[size];
@@ -24,7 +25,8 @@ public class TwoSum {
         boolean yesOrNo = findTwoSum3(arr, target);
         int Num = nwmthf.numberWithMoreThanHalfFrequency2(arr);
         List<Integer> majority = nwmthf.majorityElements(arr);
-        System.out.println(yesOrNo + " " + Num + " " + majority);
+        int value = pascalTriangle.findValueOfRowCol(5,4);
+        System.out.println(yesOrNo + " " + Num + " " + majority + value);
         }
 
     //  O(N^2)
