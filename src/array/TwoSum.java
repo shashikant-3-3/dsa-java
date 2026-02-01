@@ -4,10 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class TwoSum {
+
     public static void main(String[] args) throws FileNotFoundException {
+        NumberWithMoreThanHalfFrequency nwmthf = new NumberWithMoreThanHalfFrequency();
         Scanner sc = new Scanner(new File("input.txt"));
         int size = sc.nextInt();
         int[] arr = new int[size];
@@ -19,7 +22,9 @@ public class TwoSum {
         int target = sc.nextInt();
 
         boolean yesOrNo = findTwoSum3(arr, target);
-        System.out.println(yesOrNo);
+        int Num = nwmthf.numberWithMoreThanHalfFrequency2(arr);
+        List<Integer> majority = nwmthf.majorityElements(arr);
+        System.out.println(yesOrNo + " " + Num + " " + majority);
         }
 
     //  O(N^2)

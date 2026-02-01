@@ -1,8 +1,6 @@
 package array;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class NumberWithMoreThanHalfFrequency {
 
@@ -44,6 +42,50 @@ public class NumberWithMoreThanHalfFrequency {
             }
         }
         return currentElement;
+    }
+
+    List<Integer> majorityElements(int [] arr){
+        List<Integer> result = new ArrayList<>();
+        int maxIterations = arr.length/3;
+        int element1 = 0 , element2 = 0;
+        int count1 = 0, count2 = Integer.MIN_VALUE;
+
+        for(int a : arr){
+            if(count1 == 0 && element2 != a){
+                count1 ++;
+                element1 = a;
+            }
+            else if(count2 == 0 && element1 != a){
+                count2++;
+                element2 = a;
+            }
+            else if(element2 == a){
+                count2++;
+            } else if (element1 == a) {
+                count1++;
+            }else {
+                count1--;
+                count2--;
+            }
+        }
+        int cnt1 = 0, cnt2 = 0;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] == element1){
+                cnt1++;
+            }
+            if(arr[i] == element2){
+                cnt2++;
+            }
+        }
+        addElementsToResult(cnt1, element1, arr, result, maxIterations);
+        addElementsToResult(cnt2, element2, arr, result, maxIterations);
+        return result;
+    }
+
+    void addElementsToResult(int count, int element, int [] arr, List<Integer> result, int maxIterations){
+        if(count > maxIterations){
+            result.add(element);
+        }
     }
 }
 
